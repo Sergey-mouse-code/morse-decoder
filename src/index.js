@@ -77,6 +77,17 @@ function decode(expr) {
         '1111111110': '9',
         '1111111111': '0'
     }
+    let indStart = 0;
+    let indEnd = 10;
+    let morseResult = '';
+    let morseLength = expr.length / 10;
+    for (let i = 0; i < morseLength; i++) {
+        let subst = expr.slice(indStart, indEnd);
+        if (morse[subst] !== undefined) morseResult += morse[subst];
+        indStart += 10;
+        indEnd += 10;
+    }
+    return morseResult;
 }
 
 module.exports = {
